@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import ActiveCarwashes from '../../Components/ActiveCarwashes'
 
@@ -47,11 +46,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch)
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePage)
+export default connect(mapStateToProps)(HomePage)

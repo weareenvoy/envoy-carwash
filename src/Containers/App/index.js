@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Helmet from 'react-helmet'
 
 // Actions
 import { clearUser } from '../../store/actions/user'
@@ -28,8 +27,6 @@ class App extends Component {
     return (
       <Router location>
         <div className={`${ns}`}>
-          <Helmet title="Envoy Carwash" />
-
           <Navbar user={this.props.user} clearUser={this.props.clearUser} />
 
           <div className="page-wrapper">

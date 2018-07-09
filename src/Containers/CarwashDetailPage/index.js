@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { SyncLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
 import { alert, confirm } from 'notie'
@@ -239,11 +238,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch)
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CarwashDetailPage)
+export default connect(mapStateToProps)(CarwashDetailPage)

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 // Components
 import Notifications from '../../Components/Notifications'
@@ -15,10 +14,4 @@ class Test extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    myItem: state.myItem
-  }
-}
-
-export default connect(mapStateToProps)(Test)
+export default Test
