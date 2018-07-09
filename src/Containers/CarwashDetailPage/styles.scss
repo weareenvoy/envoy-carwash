@@ -1,0 +1,51 @@
+$ns: '.carwash-detail-page';
+
+#{$ns} {
+  &__signup,
+  &__user {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    border-bottom: 1px solid #e2e2e2;
+    min-height: 95px;
+  }
+
+  &__user {
+    &:last-child {
+      border: none;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // border-bottom: 1px solid #c7c7c7;
+  }
+
+  &__start {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__profile-image {
+    margin-right: 15px;
+  }
+
+  &__display-name {
+    margin: 0;
+  }
+
+  .button {
+    min-width: 110px;
+  }
+}

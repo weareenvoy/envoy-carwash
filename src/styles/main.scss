@@ -1,0 +1,110 @@
+// Then import notie:
+@import '../../node_modules/notie/src/notie';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html {
+  background: #f2f2f2;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  width: 90%;
+  margin: 130px auto 0;
+  max-width: 1070px;
+}
+
+a {
+  color: #df5a4c;
+  transition: color 400ms ease;
+  text-decoration: none;
+
+  &:hover {
+    color: #e03421;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  display: block;
+  color: #2c3e50;
+  font-family: Lato;
+  font-weight: bold;
+  margin: 5px 0 20px 0;
+}
+
+p,
+a {
+  font-family: Lato;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #2c3e50;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 14px;
+  }
+}
+
+button {
+  border: none;
+}
+
+.button {
+  height: 30px;
+  min-width: 100px;
+  position: relative;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: Lato;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  margin-bottom: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background: linear-gradient(315deg, #e05444 0%, #df5a4c 100%);
+  color: white;
+
+  &:active {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  &:hover {
+    color: white;
+  }
+}
+
+.secondary {
+  background: linear-gradient(315deg, #212c38 0%, #2e3e4e 100%);
+  color: white;
+
+  &:active {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.tertiary {
+  background: #fafafa;
+  border: 1px solid #df5a4c;
+  color: #2e3e4e;
+}
