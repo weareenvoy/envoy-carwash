@@ -29,9 +29,6 @@ class AddToCalendar extends Component {
     return date ? date.toISOString().replace(/-|:|\.\d+/g, '') : null
   }
 
-  add() {
-    const url = this.buildUrl()
-  }
   render() {
     return (
       <div className={`${ns}`}>

@@ -39,7 +39,7 @@ class CarwashDetailPage extends Component {
       })
       .catch(error => console.error(error))
 
-    // Subscribe to changes and update the UI after a change
+    // Subscribe to changes and update the UI after a change from the admin
     this.props.flamelink.app.content.subscribe('carwash', id, (error, carwash) => {
       if (error) {
         console.error(error)

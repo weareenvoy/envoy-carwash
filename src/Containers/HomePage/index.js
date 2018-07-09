@@ -14,6 +14,7 @@ class HomePage extends Component {
   componentDidMount() {
     let self = this
 
+    // Get Initial Carwashes
     this.props.flamelink.app.content
       .get('carwash')
       .then(carwashes => {
@@ -22,6 +23,13 @@ class HomePage extends Component {
         })
       })
       .catch(error => console.error(error))
+
+    // Subscribe to changes and update the UI after a change from the admin
+    this.props.flamelink.app.content.subscribe('carwash', (error, carwashes) => {
+      self.setState({
+        carwashes
+      })
+    })
   }
 
   render() {
