@@ -10,6 +10,24 @@ class HomePage extends Component {
     carwashes: null
   }
 
+  isEmpty(obj) {
+    let check
+
+    if (obj === undefined || obj === null) return true
+
+    for (let prop in obj) {
+      if (obj.hasOwnProperty(prop) && obj[prop].isActive) {
+        check = false
+        break
+      }
+
+      check = true
+      break
+    }
+
+    return check
+  }
+
   componentDidMount() {
     let self = this
 
@@ -17,16 +35,26 @@ class HomePage extends Component {
     this.props.flamelink.app.content
       .get('carwash')
       .then(carwashes => {
+        let isEmpty = self.isEmpty(carwashes)
+
         self.setState({
-          carwashes
+          carwashes,
+          isEmpty
         })
       })
       .catch(error => console.error(error))
 
     // Subscribe to changes and update the UI after a change from the admin
     this.props.flamelink.app.content.subscribe('carwash', (error, carwashes) => {
+      if (error) {
+        console.error(error)
+      }
+
+      let isEmpty = self.isEmpty(carwashes)
+
       self.setState({
-        carwashes
+        carwashes,
+        isEmpty
       })
     })
   }
@@ -34,7 +62,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className={`${ns}`}>
-        <ActiveCarwashes carwashes={this.state.carwashes} />
+        <ActiveCarwashes carwashes={this.state.carwashes} empty={this.state.isEmpty} />
       </div>
     )
   }

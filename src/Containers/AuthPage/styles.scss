@@ -5,14 +5,17 @@ $ns: '.auth-page';
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &__title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
-    margin-top: 6rem;
+    margin: 0 0 30px;
     max-width: 220px;
     max-height: 100%;
 

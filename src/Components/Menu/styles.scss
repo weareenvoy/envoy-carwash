@@ -29,12 +29,11 @@ $ns: '.menu';
     transform: translateX(-250px);
     transition: transform 425ms ease;
     z-index: 10;
-    // padding: 0 15px;
   }
 
   &__overlay {
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
@@ -64,7 +63,8 @@ $ns: '.menu';
     padding: 0 15px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    height: 100%;
+    position: relative;
 
     a {
       margin-bottom: 30px;
@@ -72,6 +72,8 @@ $ns: '.menu';
 
     button {
       max-width: 100px;
+      position: absolute;
+      bottom: 110px;
     }
   }
 }

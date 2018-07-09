@@ -116,7 +116,7 @@ class CarwashDetailPage extends Component {
     } else {
       alert({
         type: 'error',
-        text: 'You have already signed up'
+        text: 'You can only reserve one spot'
       })
     }
   }
