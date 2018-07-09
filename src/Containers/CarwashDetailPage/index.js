@@ -81,17 +81,6 @@ class CarwashDetailPage extends Component {
     })
   }
 
-  cleanArray(actual) {
-    var newArray = []
-    for (var i = 0; i < actual.length; i += 1) {
-      if (actual[i] && actual[i] !== null && actual[i] !== undefined) {
-        newArray.push(actual[i])
-      }
-    }
-
-    return newArray
-  }
-
   signup(e) {
     e.preventDefault()
     const self = this
