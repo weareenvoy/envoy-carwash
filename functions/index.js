@@ -11,7 +11,8 @@ exports.sendNotifications = functions.database.ref('/flamelink/environments/prod
       body: `There is a new active carwash for ${createdData.name}`,
       icon:
         'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/carwash-icon--black.png?alt=media&token=6d08ecde-a455-46d8-82ae-e38d78a0ecce',
-      requireInteraction: 'true'
+      requireInteraction: 'true',
+      click_action: 'https://envoycarwash.netlify.com/'
     }
   }
 
