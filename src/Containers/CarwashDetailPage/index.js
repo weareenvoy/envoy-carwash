@@ -214,9 +214,9 @@ class CarwashDetailPage extends Component {
               <Link to="/">Go Back</Link>
             </div>
 
-            <ul className={`${ns}__signups`}>{this.renderNewSignups()}</ul>
-
             {this.state.carwash.users && <ul className={`${ns}__user-list`}>{this.renderCurrentSignups()}</ul>}
+
+            <ul className={`${ns}__signups`}>{this.renderNewSignups()}</ul>
           </div>
         </div>
       )

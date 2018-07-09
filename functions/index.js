@@ -1,5 +1,7 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
+const request = require('request')
+
 admin.initializeApp(functions.config().firebase)
 
 exports.sendNotifications = functions.database.ref('/flamelink/environments/production/content/carwash/en-US/{carwashId}').onCreate(event => {
@@ -68,4 +70,14 @@ exports.sendNotifications = functions.database.ref('/flamelink/environments/prod
         .sendToDevice(tokens, payload)
         .then(response => cleanInvalidTokens(tokensWithKey, response.results))
     })
+})
+
+exports.sendSlackNotification = functions.database.ref('/flamelink/environments/production/content/carwash/en-US/{carwashId}').onCreate(event => {
+  const createdData = event.val()
+
+  let payload = { text: `A new carwash has been created for ${createdData}. Click <https://envoycarwash.netlify.com|Here> to sign up!` }
+
+  payload = JSON.stringify(payload)
+
+  return request.post('https://hooks.slack.com/services/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', payload)
 })
