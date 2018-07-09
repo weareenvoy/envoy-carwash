@@ -1,0 +1,19 @@
+$ns: '.add-to-calendar';
+
+#{$ns} {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__logo {
+    max-width: 35px;
+    margin-right: 20px;
+  }
+}

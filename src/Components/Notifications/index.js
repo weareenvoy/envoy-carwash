@@ -36,7 +36,8 @@ class Notifications extends PureComponent {
     return FIREBASE_MESSAGING.getToken().then(token => {
       FIREBASE_DATABASE.ref('/tokens').push({
         token: token,
-        uid: FIREBASE_AUTH.currentUser.uid
+        uid: FIREBASE_AUTH.currentUser.uid,
+        email: FIREBASE_AUTH.currentUser.email
       })
     })
   }

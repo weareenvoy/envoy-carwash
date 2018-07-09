@@ -9,7 +9,7 @@ $ns: '.carwash-detail-page';
     justify-content: space-between;
     list-style-type: none;
     border-bottom: 1px solid #e2e2e2;
-    min-height: 95px;
+    min-height: 130px;
   }
 
   &__user {
@@ -28,13 +28,20 @@ $ns: '.carwash-detail-page';
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    // border-bottom: 1px solid #c7c7c7;
   }
 
   &__start {
     display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__user-detail {
+    display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 15px;
   }
 
   &__profile-image {

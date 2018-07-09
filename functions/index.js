@@ -8,7 +8,7 @@ exports.sendNotifications = functions.database.ref('/flamelink/environments/prod
   const payload = {
     notification: {
       title: `Envoy Carwash`,
-      body: `There is a new active carwash for ${createdData.name}`,
+      body: `New active carwash on ${createdData.name}`,
       icon:
         'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/carwash-icon--black.png?alt=media&token=6d08ecde-a455-46d8-82ae-e38d78a0ecce',
       requireInteraction: 'true',

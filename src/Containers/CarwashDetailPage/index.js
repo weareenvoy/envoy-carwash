@@ -8,6 +8,9 @@ import { alert, confirm } from 'notie'
 // Styles
 import './styles.scss'
 
+// Components
+import AddToCalendar from '../../Components/AddToCalendar'
+
 const ns = 'carwash-detail-page'
 
 class CarwashDetailPage extends Component {
@@ -165,8 +168,12 @@ class CarwashDetailPage extends Component {
       return (
         <li className={`${ns}__user`} key={user.uniqueKey}>
           <div className={`${ns}__start`}>
-            <img className={`${ns}__profile-image`} alt="Profile Imaage" src={user.photoURL} style={{ width: '40px', borderRadius: '50%' }} />
-            <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
+            <div className={`${ns}__user-detail`}>
+              <img className={`${ns}__profile-image`} alt="Profile Imaage" src={user.photoURL} style={{ width: '40px', borderRadius: '50%' }} />
+              <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
+            </div>
+
+            {user.uid === currentUser.uid && <AddToCalendar date={this.state.carwash.date} name={this.state.carwash.name} />}
           </div>
 
           <div className={`${ns}__end`}>
