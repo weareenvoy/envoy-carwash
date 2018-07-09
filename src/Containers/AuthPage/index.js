@@ -40,6 +40,7 @@ class AuthPage extends Component {
         self.props.history.push('/auth')
       }
 
+      // eslint-disable-next-line
       this.state.loading = false
       self.unsubscribe()
     })
@@ -51,6 +52,7 @@ class AuthPage extends Component {
       prompt: 'select_account'
     })
 
+    // eslint-disable-next-line
     this.state.loading = false
   }
 

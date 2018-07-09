@@ -111,7 +111,8 @@ class Notifications extends PureComponent {
 
     return (
       <div className={`${ns}`}>
-        <h2>Notifications</h2>
+        <h3>Notifications</h3>
+
         {this.state.showSubscribe && (
           <p>Click the subscribe button to receive to push notifications that will notify you when the Admin has created a new carwash signup.</p>
         )}

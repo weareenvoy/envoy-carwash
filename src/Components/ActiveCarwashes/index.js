@@ -7,8 +7,6 @@ import './styles.scss'
 const ns = 'active-carwashes'
 
 class ActiveCarwashes extends Component {
-  numberofCarwashes = null
-
   renderCarwashes() {
     const { carwashes } = this.props
     let collection = []
@@ -26,8 +24,6 @@ class ActiveCarwashes extends Component {
         </div>
       )
     }
-
-    this.numberofCarwashes = collection.length
 
     return collection
   }

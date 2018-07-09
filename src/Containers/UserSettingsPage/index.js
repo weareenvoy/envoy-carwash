@@ -8,6 +8,7 @@ class Test extends Component {
   render() {
     return (
       <div className={`${ns}`}>
+        <h2>User Settings</h2>
         <Notifications />
       </div>
     )

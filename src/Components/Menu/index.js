@@ -24,7 +24,7 @@ class Menu extends Component {
           </div>
 
           <div className={`${ns}__bottom`}>
-            <Link to="/notifications">Notifications</Link>
+            <Link to="/user-settings">User Settings</Link>
 
             <button className="button primary" onClick={this.props.signOut}>
               Logout

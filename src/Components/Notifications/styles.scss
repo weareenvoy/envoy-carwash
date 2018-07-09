@@ -1,6 +1,8 @@
 $ns: '.notifications';
 
 #{$ns} {
+  margin-top: 30px;
+
   &__container {
     button {
       max-width: 200px;

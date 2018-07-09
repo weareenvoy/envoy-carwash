@@ -12,7 +12,7 @@ import HomePage from '../HomePage'
 import AuthPage from '../AuthPage'
 import AuthAdminPage from '../AuthAdminPage'
 import CarwashDetailPage from '../CarwashDetailPage'
-import NotificationsPage from '../NotificationsPage'
+import UserSettingsPage from '../UserSettingsPage'
 
 // Components
 import Navbar from '../../Components/Navbar'
@@ -34,7 +34,7 @@ class App extends Component {
               <Route path="/auth" exact component={AuthPage} />
               <Route path="/auth-admin" exact component={AuthAdminPage} />
               <PrivateRoute exact path="/" component={HomePage} />
-              <PrivateRoute exact path="/notifications" component={NotificationsPage} />
+              <PrivateRoute exact path="/user-settings" component={UserSettingsPage} />
               <PrivateRoute exact path="/carwash/:id" component={CarwashDetailPage} />
             </Switch>
           </div>
