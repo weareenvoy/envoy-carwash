@@ -19,6 +19,10 @@ class CarwashDetailPage extends Component {
     counter: null
   }
 
+  componentWillUnmount() {
+    this.props.flamelink.app.content.unsubscribe('carwash')
+  }
+
   componentDidMount() {
     const self = this
     const {

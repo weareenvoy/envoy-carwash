@@ -28,6 +28,10 @@ class HomePage extends Component {
     return check
   }
 
+  componentWillUnmount() {
+    this.props.flamelink.app.content.unsubscribe('carwash')
+  }
+
   componentDidMount() {
     let self = this
 
