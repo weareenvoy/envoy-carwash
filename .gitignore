@@ -25,7 +25,3 @@ yarn-error.log*
 /functions/package-lock.json
 /functions/etc
 firebase-debug.log
-
-# netlify
-/netlify-functions/node_modules
-/netlify-functions/package-lock.json
