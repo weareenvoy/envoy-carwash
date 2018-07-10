@@ -1,13 +1,11 @@
 var admin = require('firebase-admin')
 
-var serviceAccount = require('path/to/serviceAccountKey.json')
+var serviceAccount = require('./serviceAccountKey.json')
 
-admin.initializeApp({
+var app = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://envoy-carwash.firebaseio.com'
 })
-
-var app = admin.initializeApp()
 
 var additionalClaims = {
   admin: true
@@ -15,6 +13,7 @@ var additionalClaims = {
 
 exports.handler = function(event, context, callback) {
   var email = event.body.email
+
   admin
     .auth()
     .createCustomToken(email, additionalClaims)
