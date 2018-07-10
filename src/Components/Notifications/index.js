@@ -4,6 +4,7 @@ import 'firebase/auth'
 import 'firebase/messaging'
 import 'firebase/database'
 import { SyncLoader } from 'react-spinners'
+import { alert } from 'notie'
 
 // Styles
 import './styles.scss'
@@ -71,7 +72,14 @@ class Notifications extends PureComponent {
 
     FIREBASE_MESSAGING.requestPermission()
       .then(() => self.handleTokenRefresh())
-      .then(() => self.checkSubscription())
+      .then(() => {
+        self.checkSubscription()
+
+        alert({
+          type: 'success',
+          text: 'You are subscribed'
+        })
+      })
       .catch(err => {
         console.info('The user denied notification permissions.')
       })
@@ -94,7 +102,13 @@ class Notifications extends PureComponent {
           .child(key)
           .remove()
       })
-      .then(() => self.checkSubscription())
+      .then(() => {
+        self.checkSubscription()
+        alert({
+          type: 'success',
+          text: 'You are unsubscribed'
+        })
+      })
       .catch(err => {
         console.error('Error deleting token.')
       })
