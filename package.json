@@ -60,7 +60,7 @@
   "scripts": {
     "lambda-serve": "netlify-lambda serve lambda-src",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && netlify-lambda build lambda-src",
+    "build": "NODE_ENV=production node scripts/build.js && netlify-lambda build lambda-src",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
