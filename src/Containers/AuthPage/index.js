@@ -62,9 +62,15 @@ class AuthPage extends Component {
       if (user) {
         if (admins.find(admin => admin.email === user.email)) {
           axios
-            .post(`${url}/setCustomClaims`, {
-              uid: user.uid
-            })
+            .post(
+              `${url}/setCustomClaims`,
+              {
+                uid: user.uid
+              },
+              {
+                crossdomain: true
+              }
+            )
             .then(res => {
               console.log(res)
             })
