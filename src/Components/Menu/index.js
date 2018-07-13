@@ -16,7 +16,7 @@ class Menu extends Component {
         <div className={`${ns}__container`}>
           <div className={`${ns}__top`}>
             <div className={`${ns}__top-inner`}>
-              <Link to="/">
+              <Link to="/" onClick={this.props.toggleMenu}>
                 <img className={`${ns}__logo`} src={logo} alt="Logo" style={{ width: '90px', marginRight: '5px' }} />
                 <img className={`${ns}__icon`} src={icon} alt="Icon" style={{ width: '30px' }} />
               </Link>
@@ -24,7 +24,9 @@ class Menu extends Component {
           </div>
 
           <div className={`${ns}__bottom`}>
-            <Link to="/user-settings">User Settings</Link>
+            <Link to="/user-settings" onClick={this.props.toggleMenu}>
+              User Settings
+            </Link>
 
             <button className="button primary" onClick={this.props.signOut}>
               Logout

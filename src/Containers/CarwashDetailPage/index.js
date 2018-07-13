@@ -10,6 +10,10 @@ import './styles.scss'
 // Components
 import AddToCalendar from '../../Components/AddToCalendar'
 
+// Images
+const emptyAvatar =
+  'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/empty-avatar.png?alt=media&token=b32ae978-0e72-41ff-ada6-e964e1a06f62'
+
 const ns = 'carwash-detail-page'
 
 class CarwashDetailPage extends Component {
@@ -161,7 +165,12 @@ class CarwashDetailPage extends Component {
         <li className={`${ns}__user`} key={user.uniqueKey}>
           <div className={`${ns}__start`}>
             <div className={`${ns}__user-detail`}>
-              <img className={`${ns}__profile-image`} alt="Profile Imaage" src={user.photoURL} style={{ width: '40px', borderRadius: '50%' }} />
+              <img
+                className={`${ns}__profile-image`}
+                alt="Avatar"
+                src={user.photoURL || emptyAvatar}
+                style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+              />
               <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
             </div>
 
@@ -209,7 +218,7 @@ class CarwashDetailPage extends Component {
   render() {
     if (this.state.carwash) {
       return (
-        <div className={`${ns}`}>
+        <div className={`${ns} padding`}>
           <div className={`${ns}__container`}>
             <div className={`${ns}__top`}>
               <h2>

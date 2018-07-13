@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
+import 'firebase/auth'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
+import isAdmin from '../../utils/auth'
 
 // Styles
 import './styles.scss'
@@ -12,23 +14,47 @@ import Menu from '../Menu'
 // SVGs
 import logo from '../../assets/icons/carwash-icon--black.svg'
 
-const ns = 'navbar'
+const FIREBASE_AUTH = firebase.auth()
 
+const ns = 'navbar'
+const emptyAvatar =
+  'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/empty-avatar.png?alt=media&token=b32ae978-0e72-41ff-ada6-e964e1a06f62'
 class Navbar extends Component {
   state = {
-    showMenu: false
+    showMenu: false,
+    isAdmin: false
+  }
+
+  componentDidMount() {
+    let self = this
+
+    FIREBASE_AUTH.onAuthStateChanged(user => {
+      if (user) {
+        isAdmin().then(res => {
+          self.setState({
+            isAdmin: res
+          })
+        })
+      }
+    })
   }
 
   signOut() {
     firebase.auth().signOut()
-
     this.props.history.push('/')
     localStorage.removeItem('user')
     localStorage.removeItem('uid')
+    localStorage.removeItem('token')
     this.props.clearUser()
   }
 
   toggleMenu() {
+    if (this.state.showMenu) {
+      document.body.style.overflow = 'auto'
+    } else {
+      document.body.style.overflow = 'hidden'
+    }
+
     this.setState({
       showMenu: !this.state.showMenu
     })
@@ -56,7 +82,9 @@ class Navbar extends Component {
                 </Link>
               </div>
               <div className={`${ns}__end`}>
-                <img className={`${ns}__image`} src={currentUser.photoURL} alt="Profile" />
+                {this.state.isAdmin && <p className={`${ns}__admin-tag`}>Admin</p>}
+
+                <img className={`${ns}__image`} src={currentUser.photoURL || emptyAvatar} alt="Avatar" />
 
                 <button className="button primary" onClick={this.signOut.bind(this)}>
                   Logout

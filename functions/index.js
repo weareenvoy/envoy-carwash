@@ -75,9 +75,15 @@ exports.sendNotifications = functions.database.ref('/flamelink/environments/prod
 exports.sendSlackNotification = functions.database.ref('/flamelink/environments/production/content/carwash/en-US/{carwashId}').onCreate(event => {
   const createdData = event.val()
 
-  let payload = { text: `A new carwash has been created for ${createdData}. Click <https://envoycarwash.netlify.com|Here> to sign up!` }
+  if (createdData.isActive) {
+    let payload = {
+      text: `@channel A new carwash has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up!`
+    }
 
-  payload = JSON.stringify(payload)
+    payload = JSON.stringify(payload)
 
-  return request.post('https://hooks.slack.com/services/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', payload)
+    return request.post('https://hooks.slack.com/services/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', payload)
+  }
+
+  return null
 })

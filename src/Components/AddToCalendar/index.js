@@ -35,7 +35,7 @@ class AddToCalendar extends Component {
         <img className={`${ns}__logo`} src={googleCalendar} alt="Google Calendar" />
 
         <a className={`${ns}__button`} href={this.buildUrl()} target="_blank" rel="noopener noreferrer">
-          Add To Google Calendar
+          Add to Google Calendar
         </a>
       </div>
     )

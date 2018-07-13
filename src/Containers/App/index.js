@@ -10,12 +10,12 @@ import { clearUser } from '../../store/actions/user'
 import PrivateRoute from '../PrivateRoute'
 import HomePage from '../HomePage'
 import AuthPage from '../AuthPage'
-import AuthAdminPage from '../AuthAdminPage'
 import CarwashDetailPage from '../CarwashDetailPage'
 import UserSettingsPage from '../UserSettingsPage'
 
 // Components
 import Navbar from '../../Components/Navbar'
+import Footer from '../../Components/Footer'
 
 // Styles
 import './styles.scss'
@@ -32,12 +32,13 @@ class App extends Component {
           <div className="page-wrapper">
             <Switch>
               <Route path="/auth" exact component={AuthPage} />
-              <Route path="/auth-admin" exact component={AuthAdminPage} />
               <PrivateRoute exact path="/" component={HomePage} />
               <PrivateRoute exact path="/user-settings" component={UserSettingsPage} />
               <PrivateRoute exact path="/carwash/:id" component={CarwashDetailPage} />
             </Switch>
           </div>
+
+          <Footer user={this.props.user} />
         </div>
       </Router>
     )

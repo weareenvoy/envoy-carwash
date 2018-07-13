@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
+import 'firebase/database'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { SyncLoader } from 'react-spinners'
+import axios from 'axios'
 
 // Actions
 import { setUser } from '../../store/actions/user'
@@ -17,8 +19,9 @@ import google from '../../assets/google.png'
 import icon from '../../assets/icons/carwash-icon--black.svg'
 import logo from '../../assets/envoy.png'
 
+const FIREBASE_DATABASE = firebase.database()
+const url = process.env.NODE_ENV === 'production' ? 'https://envoy-carwash-server.netlify.com' : 'http://localhost:4000'
 const ns = 'auth-page'
-
 class AuthPage extends Component {
   provider = null
   unsubscribe = this.props.FIREBASE_APP.auth().onAuthStateChanged(() => {})
@@ -30,20 +33,14 @@ class AuthPage extends Component {
   componentDidMount() {
     let self = this
 
-    this.props.FIREBASE_APP.auth().onAuthStateChanged(user => {
-      if (user) {
-        self.props.history.push('/')
-        localStorage.setItem('user', JSON.stringify(user.providerData[0]))
-        localStorage.setItem('uid', user.uid)
-        this.props.setUser()
-      } else {
-        self.props.history.push('/auth')
-      }
-
-      // eslint-disable-next-line
-      this.state.loading = false
-      self.unsubscribe()
-    })
+    FIREBASE_DATABASE.ref('admins/')
+      .once('value')
+      .then(snapshot => {
+        return snapshot.val()
+      })
+      .then(admins => {
+        self.authStateChanged(admins)
+      })
 
     this.provider = new firebase.auth.GoogleAuthProvider()
     this.provider.setCustomParameters({
@@ -52,8 +49,42 @@ class AuthPage extends Component {
       prompt: 'select_account'
     })
 
-    // eslint-disable-next-line
-    this.state.loading = false
+    setTimeout(() => {
+      // eslint-disable-next-line
+      this.state.loading = false
+    }, 50)
+  }
+
+  authStateChanged(admins) {
+    let self = this
+
+    this.props.FIREBASE_APP.auth().onAuthStateChanged(user => {
+      if (user) {
+        if (admins.find(admin => admin.email === user.email)) {
+          axios
+            .post(`${url}/setCustomClaims`, {
+              uid: user.uid
+            })
+            .then(res => {
+              console.log(res)
+            })
+            .catch(err => {
+              console.error(err)
+            })
+        }
+
+        self.props.history.push('/')
+        self.props.setUser()
+        localStorage.setItem('user', JSON.stringify(user.providerData[0]))
+        localStorage.setItem('uid', user.uid)
+      } else {
+        self.props.history.push('/auth')
+      }
+
+      // eslint-disable-next-line
+      this.state.loading = false
+      self.unsubscribe()
+    })
   }
 
   componentWillUnmount() {

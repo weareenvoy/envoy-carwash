@@ -23,12 +23,14 @@ $ns: '.menu';
 
   &__container {
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 250px;
     background: #f2f2f2;
     transform: translateX(-250px);
     transition: transform 425ms ease;
     z-index: 10;
+    overflow: hidden;
+    max-height: 100%;
   }
 
   &__overlay {

@@ -1,24 +1,33 @@
-// Then import notie:
 @import '../../node_modules/notie/src/notie';
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
 html {
-  background: #f2f2f2;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
+  position: relative;
+  margin: 0;
+  padding-bottom: 60px;
+  min-height: 100%;
+  background: #f2f2f2;
+  font-family: 'Lato', sans-serif;
 }
 
 .page-wrapper {
   width: 90%;
-  margin: 130px auto 0;
+  margin: 0 auto;
   max-width: 1070px;
+
+  .padding {
+    padding-top: 130px;
+  }
 }
 
 a {
@@ -29,6 +38,10 @@ a {
   &:hover {
     color: #e03421;
   }
+}
+
+small {
+  font-size: 10px;
 }
 
 h1,
@@ -71,6 +84,7 @@ button {
   -webkit-font-smoothing: antialiased;
   width: 100%;
   margin-bottom: 0;
+  font-size: 14px;
 
   &:focus {
     outline: 0;

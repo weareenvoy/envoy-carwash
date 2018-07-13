@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+// Components
 import ActiveCarwashes from '../../Components/ActiveCarwashes'
 
 const ns = 'home'
@@ -65,7 +66,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className={`${ns}`}>
+      <div className={`${ns} padding`}>
         <ActiveCarwashes carwashes={this.state.carwashes} empty={this.state.isEmpty} />
       </div>
     )
