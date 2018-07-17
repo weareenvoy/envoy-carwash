@@ -1,0 +1,29 @@
+$ns: '.paid';
+
+#{$ns} {
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__has-paid-icon {
+    width: 25px;
+    margin-left: 15px;
+  }
+
+  &__has-paid-text {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+
+    @media screen and (min-width: 768px) {
+      margin-right: 20px;
+    }
+  }
+
+  .mdl-switch {
+    max-width: 40px;
+  }
+}

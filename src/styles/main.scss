@@ -54,6 +54,10 @@ h5 {
   font-family: Lato;
   font-weight: bold;
   margin: 5px 0 20px 0;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 p,
@@ -63,62 +67,11 @@ a {
   font-size: 14px;
   line-height: 22px;
   color: #2c3e50;
+  margin: 5px 0 15px;
 
   @media screen and (min-width: 1024px) {
     font-size: 14px;
   }
 }
 
-button {
-  border: none;
-}
-
-.button {
-  height: 30px;
-  min-width: 100px;
-  position: relative;
-  border-radius: 3px;
-  cursor: pointer;
-  font-family: Lato;
-  font-weight: 500;
-  -webkit-font-smoothing: antialiased;
-  width: 100%;
-  margin-bottom: 0;
-  font-size: 14px;
-
-  &:focus {
-    outline: 0;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-.primary {
-  background: linear-gradient(315deg, #e05444 0%, #df5a4c 100%);
-  color: white;
-
-  &:active {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.15);
-  }
-
-  &:hover {
-    color: white;
-  }
-}
-
-.secondary {
-  background: linear-gradient(315deg, #212c38 0%, #2e3e4e 100%);
-  color: white;
-
-  &:active {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.15);
-  }
-}
-
-.tertiary {
-  background: #fafafa;
-  border: 1px solid #df5a4c;
-  color: #2e3e4e;
-}
+@import './material-theme.min.css';

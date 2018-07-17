@@ -5,6 +5,7 @@ $ns: '.add-to-calendar';
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
   &__container {
     display: flex;
     flex-direction: row;
@@ -15,5 +16,9 @@ $ns: '.add-to-calendar';
   &__logo {
     max-width: 35px;
     margin-right: 20px;
+  }
+
+  &__button {
+    margin: 0 0 0 15px;
   }
 }

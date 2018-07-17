@@ -24,7 +24,6 @@ $ns: '.navbar';
   &__logo {
     height: 30px;
     margin: 0 15px 0 0;
-    top: 3px;
     position: relative;
   }
 
@@ -34,6 +33,10 @@ $ns: '.navbar';
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    a {
+      margin: 0;
+    }
   }
 
   &__end {
@@ -80,6 +83,6 @@ $ns: '.navbar';
   }
 
   &__admin-tag {
-    margin-right: 15px;
+    margin: 0 15px 0 0;
   }
 }

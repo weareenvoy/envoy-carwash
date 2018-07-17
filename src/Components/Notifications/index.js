@@ -10,8 +10,13 @@ import { alert } from 'notie'
 import './styles.scss'
 
 const FIREBASE_AUTH = firebase.auth()
-const FIREBASE_MESSAGING = firebase.messaging()
 const FIREBASE_DATABASE = firebase.database()
+
+let FIREBASE_MESSAGING
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  FIREBASE_MESSAGING = firebase.messaging()
+}
 
 const ns = 'notifications'
 class Notifications extends PureComponent {
@@ -114,6 +119,20 @@ class Notifications extends PureComponent {
       })
   }
 
+  checkSupport() {
+    if (!('serviceWorker' in navigator)) {
+      // Service Worker isn't supported on this browser, disable or hide UI.
+      return false
+    }
+
+    if (!('PushManager' in window)) {
+      // Push isn't supported on this browser, disable or hide UI.
+      return false
+    }
+
+    return true
+  }
+
   render() {
     if (this.state.loading) {
       return (
@@ -123,31 +142,38 @@ class Notifications extends PureComponent {
       )
     }
 
-    return (
-      <div className={`${ns}`}>
-        <h3>Notifications</h3>
+    if (this.checkSupport()) {
+      return (
+        <div className={`${ns}`}>
+          <h3>Notifications</h3>
 
-        {this.state.showSubscribe && (
-          <p>Click the subscribe button to receive to push notifications that will notify you when the Admin has created a new carwash signup.</p>
-        )}
-
-        {this.state.showUnsubscribe && <p>Click the unsubscribe button to stop receiving push notifications about new active carwashes.</p>}
-
-        <div className={`${ns}__container`}>
           {this.state.showSubscribe && (
-            <button className="button primary" onClick={this.subscribeToNotifications.bind(this)}>
-              Subscribe
-            </button>
+            <p>Click the subscribe button to receive to push notifications that will notify you when the Admin has created a new carwash signup.</p>
           )}
 
-          {this.state.showUnsubscribe && (
-            <button className="button primary" onClick={this.unsubscribeFromNotifications.bind(this)}>
-              Unsubscribe
-            </button>
-          )}
+          {this.state.showUnsubscribe && <p>Click the unsubscribe button to stop receiving push notifications about new active carwashes.</p>}
+
+          <div className={`${ns}__container`}>
+            {this.state.showSubscribe && (
+              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.subscribeToNotifications.bind(this)}>
+                Subscribe
+              </button>
+            )}
+
+            {this.state.showUnsubscribe && (
+              <button
+                className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                onClick={this.unsubscribeFromNotifications.bind(this)}
+              >
+                Unsubscribe
+              </button>
+            )}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return null
+    }
   }
 }
 

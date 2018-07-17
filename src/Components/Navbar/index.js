@@ -86,7 +86,7 @@ class Navbar extends Component {
 
                 <img className={`${ns}__image`} src={currentUser.photoURL || emptyAvatar} alt="Avatar" />
 
-                <button className="button primary" onClick={this.signOut.bind(this)}>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.signOut.bind(this)}>
                   Logout
                 </button>
               </div>

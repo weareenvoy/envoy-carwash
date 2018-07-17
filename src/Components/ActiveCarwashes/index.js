@@ -35,7 +35,7 @@ class ActiveCarwashes extends Component {
       if (carwashes[key].isActive) {
         collection.push(
           <div className={`${ns}__carwash`} key={carwashes[key].id}>
-            <Link className={`${ns}__button button primary`} to={`/carwash/${carwashes[key].id}`}>
+            <Link className={`${ns}__button mdl-button mdl-js-button mdl-button--raised mdl-button--colored`} to={`/carwash/${carwashes[key].id}`}>
               {carwashes[key].name}
             </Link>
 
@@ -56,7 +56,7 @@ class ActiveCarwashes extends Component {
       if (!carwashes[key].isActive) {
         collection.push(
           <div className={`${ns}__carwash disabled`} key={carwashes[key].id}>
-            <a className={`${ns}__button button primary`}>{carwashes[key].name}</a>
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">{carwashes[key].name}</button>
           </div>
         )
       }
@@ -76,12 +76,12 @@ class ActiveCarwashes extends Component {
 
     let emptyHtml = (
       <span>
-        <h2>No Active Carwashes</h2>
+        <h2 className={`${ns}__title`}>No Active Carwashes</h2>
         <p>Please check back again</p>
       </span>
     )
 
-    let html = <h2>Active Carwashes</h2>
+    let html = <h2 className={`${ns}__title`}>Active Carwashes</h2>
 
     let hasInactives = this.renderInactiveCarwashes().length > 0 ? true : false
 

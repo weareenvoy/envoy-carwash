@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import 'material-design-lite'
 
 // Styles
 import './styles.scss'
@@ -8,6 +9,10 @@ import googleCalendar from '../../assets/images/google-calendar.png'
 
 const ns = 'add-to-calendar'
 class AddToCalendar extends Component {
+  componentDidMount() {
+    window.componentHandler.upgradeElement(this.tooltip)
+  }
+
   buildUrl() {
     let startDate = new Date(this.props.date)
     startDate.setHours(9)
@@ -32,11 +37,13 @@ class AddToCalendar extends Component {
   render() {
     return (
       <div className={`${ns}`}>
-        <img className={`${ns}__logo`} src={googleCalendar} alt="Google Calendar" />
-
         <a className={`${ns}__button`} href={this.buildUrl()} target="_blank" rel="noopener noreferrer">
-          Add to Google Calendar
+          <img id="tt2" className={`${ns}__logo`} src={googleCalendar} alt="Google Calendar" />
         </a>
+
+        <div className="mdl-tooltip mdl-tooltip--large" htmlFor="tt2" ref={c => (this.tooltip = c)}>
+          Add to Google Calendar
+        </div>
       </div>
     )
   }

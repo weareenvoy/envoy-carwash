@@ -1,20 +1,32 @@
 $ns: '.carwash-detail-page';
 
 #{$ns} {
+  position: relative;
+
   &__signup,
-  &__user {
-    align-items: center;
+  &__card {
+    align-items: flex-start;
+    flex-direction: column;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     list-style-type: none;
-    border-bottom: 1px solid #e2e2e2;
     min-height: 130px;
+
+    background: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 30px;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
+      flex-direction: row;
+    }
   }
 
   &__signup {
     &:last-child {
-      border: none;
+      margin: 0;
     }
   }
 
@@ -23,11 +35,18 @@ $ns: '.carwash-detail-page';
     margin: 0;
   }
 
+  &__title {
+    margin-bottom: 15px;
+  }
+
   &__top {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+
+    border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 30px;
 
     @media screen and (min-width: 768px) {
       flex-direction: row;
@@ -37,20 +56,35 @@ $ns: '.carwash-detail-page';
   &__start {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    margin-right: 15px;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 15px 10px 0;
+    width: 100%;
+    flex-wrap: wrap;
 
-    @media screen and (min-width: 1025px) {
+    @media screen and (min-width: 768px) {
+      width: 100%;
       margin: 0;
+      flex-direction: column;
+      max-width: 400px;
     }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   &__user-detail {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
+
+    @media screen and (min-width: 768px) {
+      margin: 0;
+    }
   }
 
   &__profile-image {
@@ -61,7 +95,22 @@ $ns: '.carwash-detail-page';
     margin: 0;
   }
 
-  .button {
-    min-width: 150px;
+  &__card-top {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__card-bottom {
+    width: 100%;
+  }
+
+  hr {
+    height: 1px;
+    width: 100%;
+    background: #e2e2e2;
+    margin: 20px 0 15px;
   }
 }

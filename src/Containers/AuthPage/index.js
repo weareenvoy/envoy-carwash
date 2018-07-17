@@ -20,7 +20,7 @@ import icon from '../../assets/icons/carwash-icon--black.svg'
 import logo from '../../assets/envoy.png'
 
 const FIREBASE_DATABASE = firebase.database()
-const url = process.env.NODE_ENV === 'production' ? 'https://envoy-carwash-server.netlify.com' : 'http://localhost:4000'
+const url = process.env.NODE_ENV === 'production' ? 'https://envoycarwash-server.herokuapp.com' : 'https://envoycarwash-server.herokuapp.com'
 const ns = 'auth-page'
 class AuthPage extends Component {
   provider = null
@@ -82,7 +82,7 @@ class AuthPage extends Component {
         self.props.history.push('/')
         self.props.setUser()
         localStorage.setItem('user', JSON.stringify(user.providerData[0]))
-        localStorage.setItem('uid', user.uid)
+        localStorage.setItem('uid', user.providerData[0].uid)
       } else {
         self.props.history.push('/auth')
       }

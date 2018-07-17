@@ -9,6 +9,8 @@ import './styles.scss'
 
 // Components
 import AddToCalendar from '../../Components/AddToCalendar'
+import Dialog from '../../Components/Dialog'
+import Paid from '../../Components/Paid'
 
 // Images
 const emptyAvatar =
@@ -157,13 +159,16 @@ class CarwashDetailPage extends Component {
 
   renderCurrentSignups() {
     const {
-      currentUser: { currentUser }
+      currentUser: { currentUser },
+      match: {
+        params: { id }
+      }
     } = this.props
 
-    return this.state.carwash.users.map(user => {
+    return this.state.carwash.users.map((user, i) => {
       return (
-        <li className={`${ns}__user`} key={user.uniqueKey}>
-          <div className={`${ns}__start`}>
+        <li className={`${ns}__card`} key={i}>
+          <div className={`${ns}__card-top`}>
             <div className={`${ns}__user-detail`}>
               <img
                 className={`${ns}__profile-image`}
@@ -172,17 +177,21 @@ class CarwashDetailPage extends Component {
                 style={{ width: '40px', height: '40px', borderRadius: '50%' }}
               />
               <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
+
+              {user.uid === currentUser.uid && <AddToCalendar date={this.state.carwash.date} name={this.state.carwash.name} />}
             </div>
 
-            {user.uid === currentUser.uid && <AddToCalendar date={this.state.carwash.date} name={this.state.carwash.name} />}
-          </div>
-
-          <div className={`${ns}__end`}>
             {user.uid === currentUser.uid && (
-              <button className="button secondary" onClick={this.cancel.bind(this)}>
+              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.cancel.bind(this)}>
                 Cancel Reservation
               </button>
             )}
+          </div>
+
+          <hr />
+
+          <div className={`${ns}__card-bottom`}>
+            <Paid user={user} currentUser={currentUser} i={i} CARWASH_REF={this.props.CARWASH_REF} id={id} />
           </div>
         </li>
       )
@@ -204,7 +213,7 @@ class CarwashDetailPage extends Component {
           </div>
 
           <div className={`${ns}__end`}>
-            <button className="button secondary" onClick={this.signup.bind(this)}>
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.signup.bind(this)}>
               Reserve
             </button>
           </div>
@@ -219,12 +228,16 @@ class CarwashDetailPage extends Component {
     if (this.state.carwash) {
       return (
         <div className={`${ns} padding`}>
+          <Dialog show={this.state.carwash.message.length > 0} message={this.state.carwash.message} title={`Message From The Admin`} />
+
           <div className={`${ns}__container`}>
             <div className={`${ns}__top`}>
-              <h2>
+              <h2 className={`${ns}__title`}>
                 Carwash for - <span style={{ color: '#e05545' }}>{this.state.carwash.name}</span>
               </h2>
-              <Link to="/">Go Back</Link>
+              <Link className="mdl-button mdl-js-button mdl-button--primary" to="/">
+                Go Back
+              </Link>
             </div>
 
             {this.state.carwash.users && <ul className={`${ns}__user-list`}>{this.renderCurrentSignups()}</ul>}

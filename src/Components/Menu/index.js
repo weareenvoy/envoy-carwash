@@ -28,7 +28,7 @@ class Menu extends Component {
               User Settings
             </Link>
 
-            <button className="button primary" onClick={this.props.signOut}>
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.props.signOut}>
               Logout
             </button>
           </div>

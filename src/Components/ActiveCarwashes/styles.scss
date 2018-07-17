@@ -21,6 +21,12 @@ $ns: '.active-carwashes';
     }
   }
 
+  &__title {
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+  }
+
   &__button {
     display: flex;
     align-items: center;
