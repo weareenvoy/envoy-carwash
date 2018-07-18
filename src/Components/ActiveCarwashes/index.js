@@ -8,31 +8,6 @@ import './styles.scss'
 const ns = 'active-carwashes'
 
 class ActiveCarwashes extends Component {
-  hasLoaded = false
-
-  state = {
-    loading: true
-  }
-
-  componentDidMount() {
-    if (this.renderInactiveCarwashes().length > 0) {
-      this.setState({
-        loading: false
-      })
-    }
-  }
-
-  componentDidUpdate() {
-    for (let prop in this.props.carwashes) {
-      if (this.props.carwashes.hasOwnProperty(prop) && !this.hasLoaded) {
-        this.setState({
-          loading: false
-        })
-        this.hasLoaded = true
-      }
-    }
-  }
-
   renderActiveCarwashes() {
     const { carwashes } = this.props
     let collection = []
@@ -74,22 +49,22 @@ class ActiveCarwashes extends Component {
   }
 
   render() {
-    if (this.state.loading) {
+    let emptyHtml = (
+      <span>
+        <h2 className={`${ns}__title`}>No Active Carwashes</h2>
+        <p>Please check back soon, or subscribe to push updates in User Settings, or watch for notifications in the 'general-irvine' Slack channel</p>
+      </span>
+    )
+    let html = <h2 className={`${ns}__title`}>Active Carwashes</h2>
+    let hasInactives = this.renderInactiveCarwashes().length > 0 ? true : false
+
+    if (this.props.activeCarwashesLoading) {
       return (
         <span style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           <SyncLoader color="#df5a4c;" />
         </span>
       )
     }
-
-    let emptyHtml = (
-      <span>
-        <h2 className={`${ns}__title`}>No Active Carwashes</h2>
-        <p>Please check back again</p>
-      </span>
-    )
-    let html = <h2 className={`${ns}__title`}>Active Carwashes</h2>
-    let hasInactives = this.renderInactiveCarwashes().length > 0 ? true : false
 
     return (
       <div className={`${ns}`}>
@@ -98,8 +73,7 @@ class ActiveCarwashes extends Component {
         <div className={`${ns}__list`}>{this.renderActiveCarwashes()}</div>
 
         {hasInactives && (
-          <span>
-            <hr className={`${ns}__line`} />
+          <span style={{ marginTop: '30px', display: 'block' }}>
             <h2>Inactive Carwashes</h2>
             <div className={`${ns}__list`}>{this.renderInactiveCarwashes()}</div>
           </span>

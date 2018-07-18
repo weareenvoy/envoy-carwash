@@ -41,9 +41,11 @@ class CarwashDetailPage extends Component {
     this.props.flamelink.app.content
       .get('carwash', id)
       .then(carwash => {
+        if (carwash == null) return
+
         self.setState({
           carwash,
-          users: carwash.users ? carwash.users : []
+          users: carwash !== null && carwash.users ? carwash.users : []
         })
       })
       .catch(error => console.error(error))
@@ -54,9 +56,11 @@ class CarwashDetailPage extends Component {
         console.error(error)
       }
 
+      if (carwash == null) return
+
       let counter = 0
 
-      if (carwash.users && carwash.users.length) {
+      if (carwash !== null && carwash.users && carwash.users.length) {
         carwash.users.forEach(el => {
           counter += 1
         })
@@ -64,7 +68,7 @@ class CarwashDetailPage extends Component {
 
       self.setState({
         carwash,
-        users: carwash.users ? carwash.users : [],
+        users: carwash !== null && carwash.users ? carwash.users : [],
         counter
       })
     })
@@ -207,7 +211,7 @@ class CarwashDetailPage extends Component {
       signupButtons.push(
         <li className={`${ns}__signup`} key={i}>
           <div className={`${ns}__start`}>
-            <p>Click the 'Reserve' button to reserve your spot.</p>
+            <p>Click the 'Reserve' button to fill your spot.</p>
           </div>
 
           <div className={`${ns}__end`}>

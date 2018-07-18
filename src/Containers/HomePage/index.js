@@ -8,25 +8,21 @@ const ns = 'home'
 
 class HomePage extends Component {
   state = {
-    carwashes: null
+    carwashes: null,
+    isEmpty: false,
+    activeCarwashesLoading: true
   }
 
   isEmpty(obj) {
-    let check
-
     if (obj === undefined || obj === null) return true
 
     for (let prop in obj) {
       if (obj.hasOwnProperty(prop) && obj[prop].isActive) {
-        check = false
-        break
+        return false
       }
 
-      check = true
-      break
+      return true
     }
-
-    return check
   }
 
   componentWillUnmount() {
@@ -44,7 +40,8 @@ class HomePage extends Component {
 
         self.setState({
           carwashes,
-          isEmpty
+          isEmpty,
+          activeCarwashesLoading: false
         })
       })
       .catch(error => console.error(error))
@@ -59,7 +56,8 @@ class HomePage extends Component {
 
       self.setState({
         carwashes,
-        isEmpty
+        isEmpty,
+        activeCarwashesLoading: false
       })
     })
   }
@@ -67,7 +65,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className={`${ns} padding`}>
-        <ActiveCarwashes carwashes={this.state.carwashes} empty={this.state.isEmpty} />
+        <ActiveCarwashes carwashes={this.state.carwashes} empty={this.state.isEmpty} activeCarwashesLoading={this.state.activeCarwashesLoading} />
       </div>
     )
   }
