@@ -1,6 +1,6 @@
 ## Envoy Carwash
 
-## UI Aadmin Setup
+## UI Admin Configuration
 
 1.  Locate the `admins.json` file at the roote of the project
 2.  Add the new admin's jweimer, be sure it matches the email they will use to login, to the JSON file
