@@ -71,33 +71,38 @@ class Paid extends PureComponent {
     const { user, currentUser, i } = this.props
 
     return (
-      <div className={`${ns}`}>
-        <div className={`${ns}__container`}>
-          {(this.state.showPaidInfo || user.uid === currentUser.uid) && <p className={`${ns}__has-paid-text`}>Paid? {this.hasPaid(user)}</p>}
+      <React.Fragment>
+        {(this.state.showPaidInfo || user.uid === currentUser.uid) && <hr />}
+        <div className={`${ns}`}>
+          <div className={`${ns}__container`}>
+            {(this.state.showPaidInfo || user.uid === currentUser.uid) && <p className={`${ns}__has-paid-text`}>Paid? {this.hasPaid(user)}</p>}
 
-          {this.state.showPaidInfo && (
-            <label
-              className={user.hasPaid ? 'mdl-switch mdl-js-switch mdl-js-ripple-effect is-checked' : 'mdl-switch mdl-js-switch mdl-js-ripple-effect'}
-              htmlFor={`switch-${i}`}
-              ref={c => {
-                this.toggleFix(c)
-              }}
-            >
-              <input
-                type="checkbox"
-                id={`switch-${i}`}
-                className="mdl-switch__input"
-                onChange={() => {
-                  this.toggleHasPaid(user, i)
+            {this.state.showPaidInfo && (
+              <label
+                className={
+                  user.hasPaid ? 'mdl-switch mdl-js-switch mdl-js-ripple-effect is-checked' : 'mdl-switch mdl-js-switch mdl-js-ripple-effect'
+                }
+                htmlFor={`switch-${i}`}
+                ref={c => {
+                  this.toggleFix(c)
                 }}
-                checked={user.hasPaid === true}
-                style={{ visibility: 'hidden' }}
-              />
-              <span className="mdl-switch__label" />
-            </label>
-          )}
+              >
+                <input
+                  type="checkbox"
+                  id={`switch-${i}`}
+                  className="mdl-switch__input"
+                  onChange={() => {
+                    this.toggleHasPaid(user, i)
+                  }}
+                  checked={user.hasPaid === true}
+                  style={{ visibility: 'hidden' }}
+                />
+                <span className="mdl-switch__label" />
+              </label>
+            )}
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

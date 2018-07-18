@@ -188,8 +188,6 @@ class CarwashDetailPage extends Component {
             )}
           </div>
 
-          <hr />
-
           <div className={`${ns}__card-bottom`}>
             <Paid user={user} currentUser={currentUser} i={i} CARWASH_REF={this.props.CARWASH_REF} id={id} />
           </div>

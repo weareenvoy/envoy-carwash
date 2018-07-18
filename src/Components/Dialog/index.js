@@ -13,6 +13,10 @@ class Dialog extends Component {
     this.setState({
       show: this.props.show
     })
+
+    if (this.props.show) {
+      document.body.style.overflow = 'hidden'
+    }
   }
 
   render() {
@@ -35,6 +39,8 @@ class Dialog extends Component {
                     this.setState({
                       show: false
                     })
+
+                    document.body.style.overflow = 'auto'
                   }}
                 >
                   Close

@@ -73,7 +73,7 @@ $ns: '.carwash-detail-page';
   &__card {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   &__user-detail {
@@ -81,9 +81,12 @@ $ns: '.carwash-detail-page';
     align-items: center;
     justify-content: space-between;
     margin: 0 0 15px;
+    width: 100%;
 
     @media screen and (min-width: 768px) {
       margin: 0;
+      max-width: 250px;
+      justify-content: flex-start;
     }
   }
 
@@ -101,6 +104,14 @@ $ns: '.carwash-detail-page';
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    button {
+      width: 100%;
+
+      @media screen and (min-width: 768px) {
+        max-width: 180px;
+      }
+    }
   }
 
   &__card-bottom {
