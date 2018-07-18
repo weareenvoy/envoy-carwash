@@ -14,6 +14,14 @@ class ActiveCarwashes extends Component {
     loading: true
   }
 
+  componentDidMount() {
+    if (this.renderInactiveCarwashes().length > 0) {
+      this.setState({
+        loading: false
+      })
+    }
+  }
+
   componentDidUpdate() {
     for (let prop in this.props.carwashes) {
       if (this.props.carwashes.hasOwnProperty(prop) && !this.hasLoaded) {
@@ -80,9 +88,7 @@ class ActiveCarwashes extends Component {
         <p>Please check back again</p>
       </span>
     )
-
     let html = <h2 className={`${ns}__title`}>Active Carwashes</h2>
-
     let hasInactives = this.renderInactiveCarwashes().length > 0 ? true : false
 
     return (
