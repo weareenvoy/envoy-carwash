@@ -17,12 +17,19 @@ class ActiveCarwashes extends Component {
 
       if (carwashes[key].isActive) {
         collection.push(
-          <div className={`${ns}__carwash`} key={carwashes[key].id}>
-            <Link className={`${ns}__button mdl-button mdl-js-button mdl-button--raised mdl-button--colored`} to={`/carwash/${carwashes[key].id}`}>
-              {carwashes[key].name}
-            </Link>
-
-            <h6 className="active-carwashes__remaining">{carwashes[key].numberOfReservations - users} Spots Remaining</h6>
+          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwashes[key].id}>
+            <div className="mdl-card__title">
+              <h2 className="mdl-card__title-text" style={{ color: 'white', position: 'absolute', top: '10px' }}>
+                {carwashes[key].name}
+              </h2>
+            </div>
+            <div className="mdl-card__supporting-text">{carwashes[key].numberOfReservations - users} Spots Remaining</div>
+            <div className="mdl-card__actions mdl-card--border">
+              <Link to={`/carwash/${carwashes[key].id}`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Get Started
+              </Link>
+            </div>
+            <div className="mdl-card__menu" />
           </div>
         )
       }
@@ -38,8 +45,24 @@ class ActiveCarwashes extends Component {
     for (let key in carwashes) {
       if (!carwashes[key].isActive) {
         collection.push(
-          <div className={`${ns}__carwash disabled`} key={carwashes[key].id}>
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">{carwashes[key].name}</button>
+          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwashes[key].id}>
+            <div className="mdl-card__title" style={{ backgroundImage: 'none', height: '96px' }}>
+              <h2 className="mdl-card__title-text" style={{ color: 'white', position: 'absolute', top: '10px' }}>
+                {carwashes[key].name}
+              </h2>
+            </div>
+            <div className="mdl-card__supporting-text">Inactive</div>
+            <div className="mdl-card__actions mdl-card--border">
+              <Link
+                to={`/carwash/${carwashes[key].id}`}
+                className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                onClick={e => e.preventDefault()}
+                disabled
+              >
+                Get Started
+              </Link>
+            </div>
+            <div className="mdl-card__menu" />
           </div>
         )
       }

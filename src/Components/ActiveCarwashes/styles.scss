@@ -10,39 +10,20 @@ $ns: '.active-carwashes';
     max-width: 400px;
   }
 
-  &__carwash {
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-
-    &.disabled {
-      pointer-events: none;
-      opacity: 0.65;
+  &__card {
+    &.mdl-card {
+      max-width: 512px;
+      width: 100%;
     }
-  }
 
-  &__title {
-    border-bottom: 1px solid #e2e2e2;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-  }
-
-  &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    max-width: 200px;
-    width: 100%;
-    margin: 0;
-
-    &:last-child {
-      margin-bottom: 0;
+    > .mdl-card__title {
+      color: #fff;
+      height: 176px;
+      background: url('../../assets/gifs/carwash.gif') center / cover;
     }
-  }
 
-  &__remaining {
-    margin: 0 !important;
-    padding: 10px 0 0 5px;
+    > .mdl-card__menu {
+      color: #fff;
+    }
   }
 }
