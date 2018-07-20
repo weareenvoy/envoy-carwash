@@ -77,7 +77,7 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
 
   if (createdData.isActive) {
     let payload = {
-      text: `@channel A new carwash has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up! 🚘 💦`
+      text: `@channel A new carwash signup has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up! 🚘 💦`
     }
 
     payload = JSON.stringify(payload)
