@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { SyncLoader } from 'react-spinners'
+import formatDate from '../../utils/date'
 
 // Styles
 import './styles.scss'
@@ -20,7 +21,7 @@ class ActiveCarwashes extends Component {
           <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwashes[key].id}>
             <div className="mdl-card__title">
               <h2 className="mdl-card__title-text" style={{ color: 'white', position: 'absolute', top: '10px' }}>
-                {carwashes[key].name}
+                {formatDate(carwashes[key].date)}
               </h2>
             </div>
             <div className="mdl-card__supporting-text">{carwashes[key].numberOfReservations - users} Spots Remaining</div>
@@ -48,7 +49,7 @@ class ActiveCarwashes extends Component {
           <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwashes[key].id}>
             <div className="mdl-card__title mdl-card__title--inactive">
               <h2 className="mdl-card__title-text" style={{ color: '#2c3e50', position: 'absolute', top: '10px' }}>
-                {carwashes[key].name}
+                {formatDate(carwashes[key].date)}
               </h2>
             </div>
             <div className="mdl-card__supporting-text">Inactive</div>

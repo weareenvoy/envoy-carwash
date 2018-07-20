@@ -6,11 +6,13 @@ admin.initializeApp(functions.config().firebase)
 
 exports.sendNotifications = functions.database.ref('/flamelink/environments/production/content/carwash/en-US/{carwashId}').onCreate(event => {
   const createdData = event.val()
+  const val = new Date(createdData.date)
+  const formattedDate = val.getMonth() + 1 + '/' + val.getDate() + '/' + val.getFullYear()
 
   const payload = {
     notification: {
       title: `Envoy Carwash`,
-      body: `New carwash signup on ${createdData.name}`,
+      body: `New carwash signup on ${formattedDate}`,
       icon:
         'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/carwash-icon--black.png?alt=media&token=6d08ecde-a455-46d8-82ae-e38d78a0ecce',
       requireInteraction: 'true',
@@ -76,8 +78,11 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
   const createdData = event.val()
 
   if (createdData.isActive) {
+    const val = new Date(createdData.date)
+    const formattedDate = val.getMonth() + 1 + '/' + val.getDate() + '/' + val.getFullYear()
+
     let payload = {
-      text: `@channel A new carwash signup has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up! 🚘 💦`
+      text: `@channel A new carwash signup has been created for ${formattedDate}. Click <https://envoycarwash.netlify.com|here> to sign up! 🚘 💦`
     }
 
     payload = JSON.stringify(payload)

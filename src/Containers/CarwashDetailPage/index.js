@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { SyncLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
 import { alert, confirm } from 'notie'
+import formatDate from '../../utils/date'
 
 // Styles
 import './styles.scss'
@@ -182,7 +183,7 @@ class CarwashDetailPage extends Component {
               />
               <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
 
-              {user.uid === currentUser.uid && <AddToCalendar date={this.state.carwash.date} name={this.state.carwash.name} />}
+              {user.uid === currentUser.uid && <AddToCalendar date={this.state.carwash.date} name={formatDate(this.state.carwash.date)} />}
             </div>
 
             {user.uid === currentUser.uid && (
@@ -235,7 +236,7 @@ class CarwashDetailPage extends Component {
           <div className={`${ns}__container`}>
             <div className={`${ns}__top`}>
               <h2 className={`${ns}__title`}>
-                Carwash for - <span style={{ color: '#e05545' }}>{this.state.carwash.name}</span>
+                Carwash for - <span style={{ color: '#e05545' }}>{formatDate(this.state.carwash.date)}</span>
               </h2>
               <Link className="mdl-button mdl-js-button mdl-button--primary" to="/">
                 Go Back
