@@ -28,7 +28,9 @@ $ns: '.dialog';
     }
 
     &__content {
-      text-align: center;
+      p {
+        text-align: center;
+      }
     }
   }
 }
