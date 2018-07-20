@@ -18,6 +18,10 @@ $ns: '.add-to-calendar';
   }
 
   &__button {
-    margin: 0 0 0 15px;
+    margin-bottom: 0;
+
+    @media screen and (min-width: 480px) {
+      margin: 0 0 0 15px;
+    }
   }
 }

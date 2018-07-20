@@ -3,9 +3,19 @@ $ns: '.paid';
 #{$ns} {
   &__container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     justify-content: space-between;
     align-items: center;
+
+    .line {
+      width: 10px;
+      height: 1px;
+      color: #e2e2e2;
+      background: #e2e2e2;
+      max-width: 690px;
+      width: 100%;
+      margin: 0 15px;
+    }
   }
 
   &__has-paid-icon {
@@ -19,7 +29,7 @@ $ns: '.paid';
     margin: 0;
 
     @media screen and (min-width: 768px) {
-      margin-right: 20px;
+      // margin-right: 20px;
     }
   }
 
