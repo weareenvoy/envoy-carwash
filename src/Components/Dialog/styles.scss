@@ -26,5 +26,9 @@ $ns: '.dialog';
       font-size: 28px;
       line-height: 34px;
     }
+
+    &__content {
+      text-align: center;
+    }
   }
 }
