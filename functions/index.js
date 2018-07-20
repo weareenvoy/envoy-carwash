@@ -1,6 +1,6 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
-const request = require('request')
+const axios = require('axios')
 
 admin.initializeApp(functions.config().firebase)
 
@@ -77,12 +77,17 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
 
   if (createdData.isActive) {
     let payload = {
-      text: `@channel A new carwash has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up!`
+      text: `@channel A new carwash has been created for ${createdData.name}. Click <https://envoycarwash.netlify.com|Here> to sign up! 🚘 💦`
     }
 
     payload = JSON.stringify(payload)
 
-    return request.post('https://hooks.slack.com/services/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', payload)
+    console.log(payload)
+
+    return axios
+      .post('https://hooks.slack.com/services/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', payload)
+      .then(res => console.log(res))
+      .catch(err => console.error(err))
   }
 
   return null

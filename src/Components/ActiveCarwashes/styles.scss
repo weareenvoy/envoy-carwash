@@ -14,6 +14,11 @@ $ns: '.active-carwashes';
     &.mdl-card {
       max-width: 512px;
       width: 100%;
+      margin-bottom: 35px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     > .mdl-card__title {
