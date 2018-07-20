@@ -20,6 +20,10 @@ $ns: '.active-carwashes';
       color: #fff;
       height: 176px;
       background: url('../../assets/gifs/carwash.gif') center / cover;
+
+      &--inactive {
+        background: url('../../assets/images/carwash.jpg') center / cover;
+      }
     }
 
     > .mdl-card__menu {

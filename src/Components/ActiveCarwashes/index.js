@@ -46,19 +46,14 @@ class ActiveCarwashes extends Component {
       if (!carwashes[key].isActive) {
         collection.push(
           <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwashes[key].id}>
-            <div className="mdl-card__title" style={{ backgroundImage: 'none', height: '96px' }}>
-              <h2 className="mdl-card__title-text" style={{ color: 'white', position: 'absolute', top: '10px' }}>
+            <div className="mdl-card__title mdl-card__title--inactive">
+              <h2 className="mdl-card__title-text" style={{ color: '#2c3e50', position: 'absolute', top: '10px' }}>
                 {carwashes[key].name}
               </h2>
             </div>
             <div className="mdl-card__supporting-text">Inactive</div>
             <div className="mdl-card__actions mdl-card--border">
-              <Link
-                to={`/carwash/${carwashes[key].id}`}
-                className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                onClick={e => e.preventDefault()}
-                disabled
-              >
+              <Link to={`/`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onClick={e => e.preventDefault()} disabled>
                 Get Started
               </Link>
             </div>
