@@ -35,7 +35,9 @@ class Notifications extends PureComponent {
       }
     })
 
-    FIREBASE_MESSAGING.onTokenRefresh(this.handleTokenRefresh)
+    if (this.checkSupport()) {
+      FIREBASE_MESSAGING.onTokenRefresh(this.handleTokenRefresh)
+    }
   }
 
   handleTokenRefresh() {
@@ -172,7 +174,12 @@ class Notifications extends PureComponent {
         </div>
       )
     } else {
-      return null
+      return (
+        <div className={`${ns}`}>
+          <h4>Notifications</h4>
+          <p>Push notifications are not supported on this device.</p>
+        </div>
+      )
     }
   }
 }

@@ -44,7 +44,6 @@ class Navbar extends PureComponent {
     this.props.history.push('/')
     localStorage.removeItem('user')
     localStorage.removeItem('uid')
-    localStorage.removeItem('token')
     this.props.clearUser()
   }
 
