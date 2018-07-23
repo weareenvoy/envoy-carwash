@@ -6,7 +6,7 @@ import './styles.scss'
 
 // Icons
 import icon from '../../assets/icons/carwash-icon--black.svg'
-import logo from '../../assets/envoy.png'
+import logo from '../../assets/images/envoy.png'
 
 const ns = 'menu'
 class Menu extends PureComponent {

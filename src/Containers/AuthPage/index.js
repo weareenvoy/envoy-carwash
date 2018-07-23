@@ -13,11 +13,11 @@ import { setUser } from '../../store/actions/user'
 import './styles.scss'
 
 // Images
-import google from '../../assets/google.png'
+import google from '../../assets/images/google-sign-in.png'
 
 // Icons
 import icon from '../../assets/icons/carwash-icon--black.svg'
-import logo from '../../assets/envoy.png'
+import logo from '../../assets/images/envoy.png'
 
 const FIREBASE_DATABASE = firebase.database()
 const url = process.env.NODE_ENV === 'production' ? 'https://envoycarwash-server.herokuapp.com' : 'https://envoycarwash-server.herokuapp.com'
