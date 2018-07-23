@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 // Styles
 import './styles.scss'
 
 const ns = 'footer'
-class Footer extends Component {
+class Footer extends PureComponent {
   render() {
     return (
       <div className={`${ns}`}>

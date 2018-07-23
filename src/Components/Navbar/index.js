@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { withRouter } from 'react-router'
@@ -19,7 +19,7 @@ const FIREBASE_AUTH = firebase.auth()
 const ns = 'navbar'
 const emptyAvatar =
   'https://firebasestorage.googleapis.com/v0/b/envoy-carwash.appspot.com/o/empty-avatar.png?alt=media&token=b32ae978-0e72-41ff-ada6-e964e1a06f62'
-class Navbar extends Component {
+class Navbar extends PureComponent {
   state = {
     showMenu: false,
     isAdmin: false

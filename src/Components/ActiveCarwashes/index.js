@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { SyncLoader } from 'react-spinners'
 import formatDate from '../../utils/date'
@@ -8,7 +8,7 @@ import './styles.scss'
 
 const ns = 'active-carwashes'
 
-class ActiveCarwashes extends Component {
+class ActiveCarwashes extends PureComponent {
   renderActiveCarwashes() {
     const { carwashes } = this.props
     let collection = []

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 
 // Styles
@@ -9,7 +9,7 @@ import icon from '../../assets/icons/carwash-icon--black.svg'
 import logo from '../../assets/envoy.png'
 
 const ns = 'menu'
-class Menu extends Component {
+class Menu extends PureComponent {
   render() {
     return (
       <div className={this.props.show ? `${ns} show` : `${ns}`}>

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 // Styles
 import './styles.scss'
 
 const ns = 'dialog'
-class Dialog extends Component {
+class Dialog extends PureComponent {
   state = {
     show: false
   }
