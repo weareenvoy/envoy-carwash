@@ -82,7 +82,8 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
     const formattedDate = val.getMonth() + 1 + '/' + val.getDate() + '/' + val.getFullYear()
 
     let payload = {
-      text: `@channel A new carwash signup has been created for ${formattedDate}. Click <https://envoycarwash.netlify.com|here> to sign up! 🚘 💦`
+      text: `@channel A new carwash signup has been created for ${formattedDate}. Click <https://envoycarwash.netlify.com|here> to sign up! 🚘 💦`,
+      link_names: 1
     }
 
     payload = JSON.stringify(payload)

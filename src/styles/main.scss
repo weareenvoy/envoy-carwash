@@ -44,6 +44,11 @@ small {
   font-size: 10px;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -89,6 +94,19 @@ p {
 
   @media screen and (min-width: 480px) {
     text-align: left;
+  }
+}
+
+.orange {
+  color: #e05545;
+}
+
+.loader {
+  &__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

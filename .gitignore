@@ -25,3 +25,7 @@ yarn-error.log*
 /functions/package-lock.json
 /functions/etc
 firebase-debug.log
+
+# env
+.env.local
+.env

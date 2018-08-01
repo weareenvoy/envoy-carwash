@@ -108,7 +108,7 @@ class AuthPage extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <span style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        <span className="loader__container">
           <SyncLoader color="#df5a4c;" />
         </span>
       )

@@ -1,0 +1,89 @@
+$ns: '.current-signups';
+
+#{$ns} {
+  &__card {
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    min-height: 130px;
+
+    background: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 30px;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__card-top {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 25px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+
+      @media screen and (min-width: 768px) {
+        max-width: 180px;
+      }
+    }
+  }
+
+  &__user-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 25px;
+    width: 100%;
+    flex-direction: column;
+
+    @media screen and (min-width: 480px) {
+      flex-direction: row;
+    }
+
+    @media screen and (min-width: 768px) {
+      margin: 0;
+      max-width: 300px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__profile-image {
+    @media screen and (min-width: 480px) {
+      margin-right: 15px;
+    }
+  }
+
+  &__display-name {
+    margin: 0;
+  }
+
+  &__card-bottom {
+    width: 100%;
+  }
+
+  hr {
+    height: 1px;
+    width: 100%;
+    background: #e2e2e2;
+    margin: 20px 0 15px;
+  }
+}

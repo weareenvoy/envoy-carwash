@@ -5,6 +5,12 @@ import './styles.scss'
 
 const ns = 'dialog'
 class Dialog extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.close = this.close.bind(this)
+  }
+
   state = {
     show: false
   }
@@ -19,6 +25,15 @@ class Dialog extends PureComponent {
     }
   }
 
+  close(e) {
+    e.preventDefault()
+    this.setState({
+      show: false
+    })
+
+    document.body.style.overflow = 'auto'
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -31,18 +46,7 @@ class Dialog extends PureComponent {
               </div>
 
               <div className="mdl-dialog__actions">
-                <button
-                  type="button"
-                  className="mdl-button close"
-                  onClick={e => {
-                    e.preventDefault()
-                    this.setState({
-                      show: false
-                    })
-
-                    document.body.style.overflow = 'auto'
-                  }}
-                >
+                <button type="button" className="mdl-button close" onClick={this.close}>
                   Close
                 </button>
               </div>
