@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 
 // Styles
@@ -6,12 +7,21 @@ import './styles.scss'
 
 const ns = 'dialog-signup'
 class DialogSignup extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.el = document.createElement('div')
+    this.modalRoot = document.getElementById('modal-root')
+  }
+
   state = {
     make: '',
     model: ''
   }
 
   componentDidMount() {
+    this.modalRoot.appendChild(this.el)
+    this.modalRoot.style.zIndex = '999'
     window.componentHandler.upgradeDom()
 
     this.setState({
@@ -22,8 +32,14 @@ class DialogSignup extends PureComponent {
     document.body.style.overflow = 'hidden'
   }
 
+  componentWillUnmount() {
+    // Remove the element from the DOM when we unmount
+    this.modalRoot.removeChild(this.el)
+    this.modalRoot.style.zIndex = '-1'
+  }
+
   render() {
-    return (
+    const DOM = (
       <React.Fragment>
         <div className={`${ns}`}>
           <dialog className="mdl-dialog" open={this.props.open === true} style={{ width: '500px', height: 'auto' }}>
@@ -108,6 +124,12 @@ class DialogSignup extends PureComponent {
 
         <div className={this.props.open ? `${ns}__overlay show` : `${ns}__overlay`} />
       </React.Fragment>
+    )
+    return ReactDOM.createPortal(
+      // Any valid React child: JSX, strings, arrays, etc.
+      DOM,
+      // A DOM element
+      this.el
     )
   }
 }

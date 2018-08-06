@@ -3,8 +3,10 @@ $ns: '.dialog-signup';
 #{$ns} {
   z-index: 11001;
   position: absolute;
-  top: 130px;
-  left: 40vw;
+  top: 15%;
+  width: 330px;
+  transform: translate(-50%, 0%);
+  left: 50%;
 
   &__actions {
     flex-direction: row !important;

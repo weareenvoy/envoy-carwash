@@ -19,10 +19,23 @@ $ns: '.carwash-detail-page';
     }
   }
 
+  &__new-signups {
+    position: relative;
+  }
+
   hr {
     height: 1px;
     width: 100%;
     background: #e2e2e2;
     margin: 20px 0 15px;
   }
+}
+
+#modal-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }

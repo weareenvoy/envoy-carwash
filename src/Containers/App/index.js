@@ -38,6 +38,8 @@ class App extends Component {
             </Switch>
           </div>
 
+          <div id="modal-root" />
+
           <Footer user={this.props.user} />
         </div>
       </Router>
