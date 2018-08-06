@@ -8,16 +8,16 @@ $ns: '.new-signups';
     justify-content: space-between;
     list-style-type: none;
     min-height: 130px;
-
     background: white;
-    padding: 30px 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     margin-bottom: 30px;
 
-    @media screen and (min-width: 768px) {
-      align-items: center;
+    @media screen and (min-width: 480px) {
       flex-direction: row;
+      align-items: center;
+      padding: 30px;
     }
   }
 
@@ -30,17 +30,29 @@ $ns: '.new-signups';
   &__start {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
-    margin: 0 15px 10px 0;
+    margin: 0 0 10px 0;
     width: 100%;
     flex-wrap: wrap;
+
+    @media screen and (min-width: 480px) {
+      justify-content: space-between;
+    }
 
     @media screen and (min-width: 768px) {
       width: 100%;
       margin: 0;
       flex-direction: column;
       max-width: 400px;
+    }
+  }
+
+  &__end {
+    @media screen and (max-width: 480px) {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
   }
 }
