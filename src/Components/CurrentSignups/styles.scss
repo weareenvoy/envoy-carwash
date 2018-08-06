@@ -61,7 +61,7 @@ $ns: '.current-signups';
 
     @media screen and (min-width: 768px) {
       margin: 0;
-      max-width: 300px;
+      max-width: 400px;
       justify-content: flex-start;
     }
   }
@@ -78,6 +78,88 @@ $ns: '.current-signups';
 
   &__card-bottom {
     width: 100%;
+  }
+
+  &__car-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &.show {
+      #{$ns}__car-details-wrapper {
+        max-height: 300px;
+        overflow: auto;
+      }
+
+      #{$ns}__car-details-title {
+        &:after {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &__car-details-title {
+    cursor: pointer;
+    position: relative;
+    margin: 10px 0;
+
+    &::after {
+      content: '\2039';
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: rotate(-90deg);
+      transition: transform 400ms ease;
+      font-size: 30px;
+    }
+  }
+
+  &__car-details-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 500ms ease;
+  }
+
+  &__car-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    margin-bottom: 7px;
+
+    * {
+      margin: 0;
+    }
+  }
+
+  &__car-detail-headline {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2c3e50;
+  }
+
+  &__car-detail-copy {
+    color: #73777c;
+  }
+
+  &__actions {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      justify-content: center;
+      width: auto;
+    }
+
+    button {
+      flex-basis: 105px;
+    }
   }
 
   hr {

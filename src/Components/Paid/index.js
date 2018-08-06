@@ -76,7 +76,7 @@ class Paid extends PureComponent {
           <div className={`${ns}__container`}>
             {(this.state.showPaidInfo || user.uid === currentUser.uid) && (
               <React.Fragment>
-                <p className={`${ns}__has-paid-text`}>Paid? {this.hasPaid(user)}</p> {this.state.showPaidInfo && <span className="line" />}
+                <h6 className={`${ns}__has-paid-text`}>Paid? {this.hasPaid(user)}</h6> {this.state.showPaidInfo && <span className="line" />}
               </React.Fragment>
             )}
 

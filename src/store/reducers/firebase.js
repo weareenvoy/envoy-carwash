@@ -12,10 +12,12 @@ const FIREBASE_APP = firebase.initializeApp({
 
 const FIREBASE_DATABASE = FIREBASE_APP.database()
 const CARWASH_REF = FIREBASE_DATABASE.ref('flamelink/environments/production/content/carwash/en-US')
+const USERS_REF = FIREBASE_DATABASE.ref('users')
 
 const initial = {
   FIREBASE_APP,
-  CARWASH_REF
+  CARWASH_REF,
+  USERS_REF
 }
 
 export default function carousel(state = initial, action) {

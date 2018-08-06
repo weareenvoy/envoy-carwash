@@ -7,7 +7,7 @@ $ns: '.active-carwashes';
     align-content: center;
     justify-content: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 520px;
   }
 
   &__card {
@@ -23,7 +23,7 @@ $ns: '.active-carwashes';
 
     > .mdl-card__title {
       color: #fff;
-      height: 176px;
+      height: 210px;
       background: url('../../assets/gifs/carwash.gif') center / cover;
 
       &--inactive {

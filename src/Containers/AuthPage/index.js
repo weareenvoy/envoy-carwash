@@ -60,6 +60,22 @@ class AuthPage extends Component {
 
     this.props.FIREBASE_APP.auth().onAuthStateChanged(user => {
       if (user) {
+        const userData = user
+
+        this.props.USERS_REF.orderByChild('uid')
+          .equalTo(user.uid)
+          .once('value', snapshot => {
+            if (snapshot.val() === null) {
+              // If the users profile doesn't exist lets define it in the DB
+              this.props.USERS_REF.child(userData.uid).set({
+                provider: userData.providerData[0],
+                uid: userData.uid,
+                make: '',
+                model: ''
+              })
+            }
+          })
+
         if (admins.find(admin => admin.email === user.email)) {
           axios
             .post(
@@ -132,7 +148,8 @@ class AuthPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    FIREBASE_APP: state.firebase.FIREBASE_APP
+    FIREBASE_APP: state.firebase.FIREBASE_APP,
+    USERS_REF: state.firebase.USERS_REF
   }
 }
 

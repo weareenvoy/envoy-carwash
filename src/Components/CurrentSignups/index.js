@@ -35,19 +35,48 @@ class CurrentSignups extends PureComponent {
               style={{ width: '40px', height: '40px', borderRadius: '50%' }}
             />
             <h4 className={`${ns}__display-name`}>{user.displayName}</h4>
-
-            {user.uid === currentUser.uid && <AddToCalendar date={carwash.date} name={formatDate(carwash.date)} />}
           </div>
 
-          {user.uid === currentUser.uid && (
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={cancel}>
-              Cancel Reservation
-            </button>
-          )}
+          <span className={`${ns}__actions`}>
+            {user.uid === currentUser.uid && (
+              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={cancel}>
+                Cancel
+              </button>
+            )}
+
+            {user.uid === currentUser.uid && <AddToCalendar date={carwash.date} name={formatDate(carwash.date)} />}
+          </span>
         </div>
 
         <div className={`${ns}__card-bottom`}>
           <Paid user={user} currentUser={currentUser} i={i} CARWASH_REF={CARWASH_REF} id={id} />
+
+          <div
+            className={`${ns}__car-details`}
+            onClick={e => {
+              e.preventDefault()
+
+              if (!e.target.parentElement.classList.contains('show')) {
+                e.target.parentElement.classList.add('show')
+              } else {
+                e.target.parentElement.classList.remove('show')
+              }
+            }}
+          >
+            <h6 className={`${ns}__car-details-title`}>Car Details</h6>
+
+            <div className={`${ns}__car-details-wrapper`}>
+              <span className={`${ns}__car-detail`}>
+                <p className={`${ns}__car-detail-headline`}>Make</p>
+                <p className={`${ns}__car-detail-copy`}>{user.carMake}</p>
+              </span>
+
+              <span className={`${ns}__car-detail`}>
+                <p className={`${ns}__car-detail-headline`}>Model</p>
+                <p className={`${ns}__car-detail-copy`}>{user.carModel}</p>
+              </span>
+            </div>
+          </div>
         </div>
       </li>
     ))

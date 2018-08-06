@@ -1,0 +1,46 @@
+$ns: '.dialog-signup';
+
+#{$ns} {
+  z-index: 11001;
+  position: absolute;
+  top: 130px;
+  left: 40vw;
+
+  &__actions {
+    flex-direction: row !important;
+    justify-content: flex-end;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(58, 58, 58, 0.616);
+    z-index: 11000;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .mdl-dialog {
+    text-align: center;
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+
+    &__title {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    &__content {
+      p {
+        text-align: center;
+      }
+    }
+  }
+}

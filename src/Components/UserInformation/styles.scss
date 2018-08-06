@@ -1,0 +1,43 @@
+$ns: '.user-information';
+
+#{$ns} {
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    button:first-child {
+      margin-right: 15px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__item {
+    padding: 15px 0 0 0 !important;
+
+    h6 {
+      margin-right: 15px;
+    }
+
+    * {
+      margin: 0;
+    }
+  }
+
+  &__input {
+    outline: none;
+    padding-left: 5px;
+  }
+
+  ::placeholder {
+    text-indent: 5px;
+  }
+}

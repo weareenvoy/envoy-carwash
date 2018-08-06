@@ -91,7 +91,7 @@ class CarwashDetailPage extends Component {
     })
   }
 
-  signup(e) {
+  signup(e, make, model) {
     e.preventDefault()
     const self = this
 
@@ -113,7 +113,9 @@ class CarwashDetailPage extends Component {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
             uniqueKey: key,
-            photoURL: currentUser.photoURL
+            photoURL: currentUser.photoURL,
+            carMake: make,
+            carModel: model
           })
 
           const cleanArray = users.filter(val => val !== undefined && val !== null)
@@ -143,7 +145,7 @@ class CarwashDetailPage extends Component {
     } = this.props
 
     confirm({
-      text: 'Are you sure you would like to cancel?',
+      text: 'Are you sure you would like to cancel your reservation?',
       cancelText: 'No',
       submitCallback: () => {
         const userIndex = self.state.users.findIndex((user, i) => {
@@ -194,7 +196,12 @@ class CarwashDetailPage extends Component {
             )}
 
             <ul className={`${ns}__new-signups`}>
-              <NewSignups counter={this.state.counter} carwash={this.state.carwash} signup={this.signup.bind(this)} />
+              <NewSignups
+                counter={this.state.counter}
+                carwash={this.state.carwash}
+                signup={this.signup.bind(this)}
+                USERS_REF={this.props.USERS_REF}
+              />
             </ul>
           </div>
         </div>
@@ -213,6 +220,7 @@ function mapStateToProps(state) {
   return {
     flamelink: state.flamelink,
     CARWASH_REF: state.firebase.CARWASH_REF,
+    USERS_REF: state.firebase.USERS_REF,
     currentUser: state.user
   }
 }
