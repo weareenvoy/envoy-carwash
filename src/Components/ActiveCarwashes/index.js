@@ -36,11 +36,20 @@ class ActiveCarwashes extends PureComponent {
     })
   }
 
+  numDaysBetween(d1, d2) {
+    let diff = Math.abs(d1.getTime() - d2.getTime())
+
+    return diff / (1000 * 60 * 60 * 24)
+  }
+
   renderActiveCarwashes() {
     return this.carwashes.map(carwash => {
       const users = carwash.users ? carwash.users.length : 0
+      const d1 = new Date()
+      const d2 = new Date(carwash.date)
+      const daysDifference = this.numDaysBetween(d1, d2)
 
-      if (carwash.isActive) {
+      if (carwash.isActive && daysDifference <= 14) {
         return (
           <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwash.id}>
             <div className="mdl-card__title">
@@ -57,7 +66,7 @@ class ActiveCarwashes extends PureComponent {
             <div className="mdl-card__menu" />
           </div>
         )
-      } else {
+      } else if (daysDifference <= 14) {
         return (
           <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwash.id}>
             <div className="mdl-card__title mdl-card__title--inactive">
@@ -73,6 +82,8 @@ class ActiveCarwashes extends PureComponent {
           </div>
         )
       }
+
+      return null
     })
   }
 

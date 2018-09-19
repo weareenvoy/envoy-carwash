@@ -74,16 +74,19 @@ class UserInformation extends PureComponent {
               <ul className="demo-list-item mdl-list">
                 <li className={`${ns}__item mdl-list__item`}>
                   <h6>Car Make: </h6>
-                  <p className="mdl-list__item-primary-content">{this.state.make ? this.state.make : ''}</p>
+                  <p className="">{this.state.make ? this.state.make : ''}</p>
                 </li>
 
                 <li className={`${ns}__item mdl-list__item`}>
                   <h6>Car Model: </h6>
-                  <p className="mdl-list__item-primary-content">{this.state.model ? this.state.model : ''}</p>
+                  <p className="">{this.state.model ? this.state.model : ''}</p>
                 </li>
               </ul>
 
-              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.toggleForm.bind(this)}>
+              <button
+                className={`${ns}__button mdl-button mdl-js-button mdl-button--raised mdl-button--colored`}
+                onClick={this.toggleForm.bind(this)}
+              >
                 Update Info
               </button>
             </React.Fragment>

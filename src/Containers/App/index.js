@@ -25,7 +25,7 @@ const ns = 'app'
 class App extends Component {
   render() {
     return (
-      <Router location>
+      <Router location onUpdate={() => window.scrollTo(0, 0)}>
         <div className={`${ns}`}>
           <Navbar user={this.props.user} clearUser={this.props.clearUser} />
 
