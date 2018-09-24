@@ -19,10 +19,6 @@ class Dialog extends PureComponent {
     this.setState({
       show: this.props.show
     })
-
-    if (this.props.show) {
-      document.body.style.overflow = 'hidden'
-    }
   }
 
   close(e) {
@@ -30,8 +26,6 @@ class Dialog extends PureComponent {
     this.setState({
       show: false
     })
-
-    document.body.style.overflow = 'auto'
   }
 
   render() {

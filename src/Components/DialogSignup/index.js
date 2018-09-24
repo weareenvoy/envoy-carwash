@@ -28,8 +28,6 @@ class DialogSignup extends PureComponent {
       make: this.props.make,
       model: this.props.model
     })
-
-    document.body.style.overflow = 'hidden'
   }
 
   componentWillUnmount() {
@@ -94,7 +92,6 @@ class DialogSignup extends PureComponent {
                 className="mdl-button submit"
                 onClick={e => {
                   this.props.signup(e, this.state.make, this.state.model)
-                  document.body.style.overflow = 'auto'
                 }}
                 disabled={this.state.make && this.state.model && this.state.make.length > 0 && this.state.model.length > 0 ? false : true}
               >
@@ -105,7 +102,6 @@ class DialogSignup extends PureComponent {
                 className="mdl-button close"
                 onClick={e => {
                   this.props.close()
-                  document.body.style.overflow = 'auto'
                 }}
               >
                 Cancel
