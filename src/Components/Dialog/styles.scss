@@ -2,7 +2,13 @@ $ns: '.dialog';
 
 #{$ns} {
   z-index: 11001;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  max-height: 400px;
+  height: 100%;
+  max-width: 400px;
+  width: 100%;
+  transform: translateX(-50%);
 
   &__overlay {
     position: fixed;

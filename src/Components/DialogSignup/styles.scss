@@ -2,11 +2,14 @@ $ns: '.dialog-signup';
 
 #{$ns} {
   z-index: 11001;
-  position: absolute;
-  top: 15%;
-  width: 330px;
-  transform: translate(-50%, 0%);
+  position: fixed;
   left: 50%;
+  max-height: 400px;
+  height: 100%;
+  max-width: 400px;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  top: 50%;
 
   &__actions {
     flex-direction: row !important;
