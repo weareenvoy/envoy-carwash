@@ -78,6 +78,8 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
   const createdData = event.val()
 
   if (createdData.isActive) {
+    console.log(createdData)
+
     const val = new Date(createdData.date)
     const formattedDate = val.getMonth() + 1 + '/' + val.getDate() + '/' + val.getFullYear()
 
@@ -87,8 +89,6 @@ exports.sendSlackNotification = functions.database.ref('/flamelink/environments/
     }
 
     payload = JSON.stringify(payload)
-
-    console.log(payload)
 
     return axios
       .post('https://hooks.slack.com/services/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', payload)
