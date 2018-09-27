@@ -30,11 +30,13 @@ class ActiveCarwashes extends PureComponent {
     })
 
     this.props.flamelink.app.content.get('appSettings').then(settings => {
-      self.setState({
-        ...self.state,
-        daysLimit: settings.activeCarwashDays,
-        componentLoaded: true
-      })
+      if (settings !== null && settings.activeCarwashDays !== null && settings.activeCarwashDays !== undefined) {
+        self.setState({
+          ...self.state,
+          daysLimit: settings.activeCarwashDays,
+          componentLoaded: true
+        })
+      }
     })
   }
 
