@@ -113,7 +113,10 @@ class AuthPage extends Component {
       }
 
       // eslint-disable-next-line
-      this.state.loading = false
+      self.state.loading = false
+      self.setState({
+        loading: false
+      })
       self.unsubscribe()
     })
   }
