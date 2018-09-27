@@ -31,7 +31,7 @@ class Dialog extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className={`${ns}`}>
+        <div className={this.state.show ? `${ns} show` : `${ns}`}>
           <div className={`${ns}__container`}>
             <dialog className="mdl-dialog" open={this.state.show === true}>
               <h4 className="mdl-dialog__title">{this.props.title}</h4>

@@ -60,45 +60,54 @@ class AuthPage extends Component {
 
     this.props.FIREBASE_APP.auth().onAuthStateChanged(user => {
       if (user) {
-        const userData = user
+        const d1 = new Date()
+        const d2 = new Date(user.metadata.lastSignInTime)
+        const daysDiff = this.numDaysBetween(d1, d2)
 
-        this.props.USERS_REF.orderByChild('uid')
-          .equalTo(user.uid)
-          .once('value', snapshot => {
-            if (snapshot.val() === null) {
-              // If the users profile doesn't exist lets define it in the DB
-              this.props.USERS_REF.child(userData.uid).set({
-                provider: userData.providerData[0],
-                uid: userData.uid,
-                make: '',
-                model: ''
-              })
-            }
-          })
+        if (daysDiff > 14) {
+          firebase.auth().signOut()
+          self.props.history.push('/auth')
+        } else {
+          const userData = user
 
-        if (admins.find(admin => admin.email === user.email)) {
-          axios
-            .post(
-              `${url}/setCustomClaims`,
-              {
-                uid: user.uid
-              },
-              {
-                crossdomain: true
+          this.props.USERS_REF.orderByChild('uid')
+            .equalTo(user.uid)
+            .once('value', snapshot => {
+              if (snapshot.val() === null) {
+                // If the users profile doesn't exist lets define it in the DB
+                this.props.USERS_REF.child(userData.uid).set({
+                  provider: userData.providerData[0],
+                  uid: userData.uid,
+                  make: '',
+                  model: ''
+                })
               }
-            )
-            .then(res => {
-              console.log(res)
             })
-            .catch(err => {
-              console.error(err)
-            })
-        }
 
-        self.props.history.push('/')
-        self.props.setUser()
-        localStorage.setItem('user', JSON.stringify(user.providerData[0]))
-        localStorage.setItem('uid', user.providerData[0].uid)
+          if (admins.find(admin => admin.email === user.email)) {
+            axios
+              .post(
+                `${url}/setCustomClaims`,
+                {
+                  uid: user.uid
+                },
+                {
+                  crossdomain: true
+                }
+              )
+              .then(res => {
+                console.log(res)
+              })
+              .catch(err => {
+                console.error(err)
+              })
+          }
+
+          self.props.history.push('/')
+          self.props.setUser()
+          localStorage.setItem('user', JSON.stringify(user.providerData[0]))
+          localStorage.setItem('uid', user.providerData[0].uid)
+        }
       } else {
         self.props.history.push('/auth')
       }
@@ -107,6 +116,12 @@ class AuthPage extends Component {
       this.state.loading = false
       self.unsubscribe()
     })
+  }
+
+  numDaysBetween(d1, d2) {
+    let diff = Math.abs(d1.getTime() - d2.getTime())
+
+    return diff / (1000 * 60 * 60 * 24)
   }
 
   componentWillUnmount() {

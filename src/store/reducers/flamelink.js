@@ -13,7 +13,7 @@ const initial = {
   app
 }
 
-export default function carousel(state = initial, action) {
+export default function flamelinkReducer(state = initial, action) {
   switch (action.type) {
     default:
       return state

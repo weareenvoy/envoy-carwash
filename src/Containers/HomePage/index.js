@@ -65,7 +65,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className={`${ns} padding`}>
-        <ActiveCarwashes carwashes={this.state.carwashes} empty={this.state.isEmpty} activeCarwashesLoading={this.state.activeCarwashesLoading} />
+        <ActiveCarwashes flamelink={this.props.flamelink} carwashes={this.state.carwashes} empty={this.state.isEmpty} activeCarwashesLoading={this.state.activeCarwashesLoading} />
       </div>
     )
   }

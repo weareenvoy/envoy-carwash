@@ -12,7 +12,13 @@ class ActiveCarwashes extends PureComponent {
   sortable = []
   carwashes = []
 
+  state = {
+    daysLimit: 14,
+    componentLoaded: false
+  }
+
   componentDidMount() {
+    let self = this
     const { carwashes } = this.props
 
     for (let key in carwashes) {
@@ -21,6 +27,14 @@ class ActiveCarwashes extends PureComponent {
 
     this.carwashes = this.sortable.sort((a, b) => {
       return new Date(b.date) - new Date(a.date)
+    })
+
+    this.props.flamelink.app.content.get('appSettings').then(settings => {
+      self.setState({
+        ...self.state,
+        daysLimit: settings.activeCarwashDays,
+        componentLoaded: true
+      })
     })
   }
 
@@ -37,21 +51,29 @@ class ActiveCarwashes extends PureComponent {
   }
 
   numDaysBetween(d1, d2) {
+    // If d2 is in the future it's active
+    if (d1 < d2) return true
+
     let diff = Math.abs(d1.getTime() - d2.getTime())
 
     return diff / (1000 * 60 * 60 * 24)
   }
 
   renderActiveCarwashes() {
-    return this.carwashes.map(carwash => {
+    return this.carwashes.map((carwash, i) => {
       const users = carwash.users ? carwash.users.length : 0
       const d1 = new Date()
       const d2 = new Date(carwash.date)
-      const daysDifference = this.numDaysBetween(d1, d2)
+      let daysDifference = this.numDaysBetween(d1, d2)
+      let check = daysDifference <= this.state.daysLimit
 
-      if (carwash.isActive && daysDifference <= 14) {
+      if (typeof daysDifference === 'boolean') {
+        check = daysDifference
+      }
+
+      if (carwash.isActive && check) {
         return (
-          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwash.id}>
+          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={i}>
             <div className="mdl-card__title">
               <h2 className="mdl-card__title-text" style={{ color: 'white', position: 'absolute', top: '10px' }}>
                 {formatDate(carwash.date)}
@@ -66,9 +88,9 @@ class ActiveCarwashes extends PureComponent {
             <div className="mdl-card__menu" />
           </div>
         )
-      } else if (daysDifference <= 14) {
+      } else if (daysDifference <= check) {
         return (
-          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={carwash.id}>
+          <div className={`${ns}__card mdl-card mdl-shadow--2dp`} key={i}>
             <div className="mdl-card__title mdl-card__title--inactive">
               <h2 className="mdl-card__title-text" style={{ color: '#2c3e50', position: 'absolute', top: '10px' }}>
                 {formatDate(carwash.date)}
@@ -88,7 +110,7 @@ class ActiveCarwashes extends PureComponent {
   }
 
   render() {
-    if (this.props.activeCarwashesLoading) {
+    if (this.props.activeCarwashesLoading && !this.state.componentLoaded) {
       return (
         <span className="loader__container">
           <SyncLoader color="#df5a4c;" />

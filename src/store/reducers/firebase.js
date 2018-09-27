@@ -20,7 +20,7 @@ const initial = {
   USERS_REF
 }
 
-export default function carousel(state = initial, action) {
+export default function firebaseReducer(state = initial, action) {
   switch (action.type) {
     default:
       return state

@@ -1,7 +1,8 @@
 $ns: '.dialog';
 
 #{$ns} {
-  z-index: 11001;
+  z-index: -1;
+  pointer-events: none;
   position: fixed;
   left: 50%;
   max-height: 400px;
@@ -9,6 +10,11 @@ $ns: '.dialog';
   max-width: 400px;
   width: 100%;
   transform: translateX(-50%);
+
+  &.show {
+    z-index: 11001;
+    pointer-events: auto;
+  }
 
   &__overlay {
     position: fixed;
