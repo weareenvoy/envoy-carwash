@@ -19,4 +19,25 @@
 
 ## Development
 
-For local development, recah out to Jeff Weimer and get a copy of the `.env.local` file needed to connect to the Firebase API.
+For local development, access LastPass Secure Notes and get a copy of the `.env.local` file needed to connect to the Firebase API.
+
+## Site Platforms
+
+#### Netlify
+
+1. Hosting
+
+#### Firelink
+
+1. CMS
+
+#### Firebase
+
+1. User Authentication
+2. Realtime Database
+3. Storage
+4. Cloud Messaging
+
+#### Google Cloud Platform
+
+1. Cloud Functions
